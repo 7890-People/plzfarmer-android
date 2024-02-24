@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
 
-    abstract val TAG: String // 액티비티 태그
+    open val TAG: String = this.javaClass.simpleName
     lateinit var binding: T //데이터 바인딩
     abstract val layoutRes: Int // 바인딩에 필요한 layout
     private var toast: Toast? = null //토스트 보관 변수

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            android:background="@color/green1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.32" />
+
+        <TextView
+            android:id="@+id/textview_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="환영합니다!"
+            android:textColor="@color/gray1"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textview_destript1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="농장을 부탁해에서 사용하실 "
+            app:layout_constraintStart_toStartOf="@id/textview_welcome"
+            app:layout_constraintTop_toBottomOf="@id/textview_welcome" />
+
+        <TextView
+            android:id="@+id/textview_destript2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임"
+            android:textSize="16sp"
+            android:textColor="@color/green1"
+            app:layout_constraintBaseline_toBaselineOf="@id/textview_destript1"
+            app:layout_constraintStart_toEndOf="@id/textview_destript1" />
+        <TextView
+            android:id="@+id/textview_destript3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="을 작성해주세요"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/textview_destript1"
+            app:layout_constraintStart_toEndOf="@id/textview_destript2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="닉네임은 2~6자로 입력해주세요"
+            android:textColorHint="@color/gray3"
+            app:boxStrokeColor="@color/gray3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:boxBackgroundColor="@color/white"
+            android:orientation="horizontal"
+            android:id="@+id/layout_nickname_input"
+            app:hintTextAppearance="@style/CustomTextAppearanceSmall"
+            app:endIconMode="clear_text"
+            android:layout_marginHorizontal="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_nickname"
+                android:maxLines="1"
+                android:inputType="text"
+                android:maxLength="6"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:background="@drawable/common_shape_rect_r12_filled"
+            android:backgroundTint="@color/green1"
+            android:text="중복확인"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/layout_nickname_input"
+            app:layout_constraintBottom_toBottomOf="@id/layout_nickname_input"
+            app:layout_constraintEnd_toEndOf="@id/layout_nickname_input"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/common_shape_rect_r12_filled"
+            android:backgroundTint="@color/green1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
