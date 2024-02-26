@@ -145,7 +145,7 @@
                     android:layout_marginTop="20dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
-                    android:text="다음 중 농장에서 키우고 있는 식물을 모두 선택해주세요"
+                    android:text="농장에서 키우고 있는 식물을 모두 선택해주세요"
                     android:textSize="14sp"
                     app:drawableLeftCompat="@drawable/common_img_sprout" />
 
@@ -169,7 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:chipBackgroundColor="@color/white"
-                        android:text="가지"
+                        android:text="오이"
                         android:textColor="@color/gray1"
                         app:chipStrokeColor="@color/green1"
                         app:rippleColor="@color/transparent" />
@@ -186,6 +186,7 @@
             android:background="@drawable/common_shape_rect_r12_filled"
             android:backgroundTint="@color/green1"
             android:text="완료"
+            android:id="@+id/nextBtn"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //카카오 로그인
-    implementation ("com.kakao.sdk:v2-user:2.18.0")
+    implementation ("com.kakao.sdk:v2-user:2.19.0")
 
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.11.0")

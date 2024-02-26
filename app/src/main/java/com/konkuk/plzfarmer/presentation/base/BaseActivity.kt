@@ -24,7 +24,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.lifecycleOwner = this
         setFullScreen()
-        initViewModel()
         afterViewCreated()
     }
 
@@ -62,8 +61,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         startActivity(intent)
     }
 
-
-    abstract fun initViewModel()
     abstract fun afterViewCreated()
 
     //  토스트 생성
@@ -76,5 +73,4 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     fun setFragment(id: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(id, fragment).commit()
     }
-
 }

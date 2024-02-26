@@ -21,7 +21,19 @@
         <item name="android:radioButtonStyle">@style/NanumCheckboxStyle</item>
         <item name="android:checkboxStyle">@style/NanumRadioButtonStyle</item>
         <item name="android:textViewStyle">@style/NanumTextViewStyle</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
 
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSecondary">@color/gray3</item>
+        <item name="colorSurfaceContainerHigh">@color/background</item>
+        <item name="fontFamily">@font/nanum_square_ac</item>
+        <item name="colorOnSurface">@color/gray1</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.App.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.App.DialogButton</item>
     </style>
 
 
