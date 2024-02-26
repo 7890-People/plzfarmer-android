@@ -2,6 +2,7 @@ package com.konkuk.plzfarmer.remote.repository
 
 import com.konkuk.plzfarmer.presentation.base.BaseRepository
 import com.konkuk.plzfarmer.remote.api.AuthApi
+import com.konkuk.plzfarmer.remote.request.LoginRequest
 import com.konkuk.plzfarmer.remote.request.SignUpRequest
 import com.konkuk.plzfarmer.remote.response.DuplicateResponse
 import com.konkuk.plzfarmer.remote.response.LoginResponse
@@ -15,7 +16,7 @@ class AuthRepository : BaseRepository() {
 
     val api = RetrofitClient.create(AuthApi::class.java)
     suspend fun requestLogin(id: String): ApiState<out LoginResponse> = makeRequest {
-        api.requestLogin(id)
+        api.requestLogin(LoginRequest(id))
     }
 
 //    suspend fun checkDuplicate(nickname:String): ApiState<out DuplicateResponse> = makeRequest {
