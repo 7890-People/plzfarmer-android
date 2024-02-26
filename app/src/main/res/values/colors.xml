@@ -11,5 +11,11 @@
     <!--CUSTOM COLORS -->
     <color name="background">#FFF2F3ED</color>
     <color name="gray1">#FF4D4D4D</color>
+    <color name="gray2">#FFDADADA</color>
+    <color name="gray3">#FFB3B3B3</color>
+
+    <color name="green1">#FF68C182</color>
+
+    <color name="transparent">#00000000</color>
 
 </resources>
