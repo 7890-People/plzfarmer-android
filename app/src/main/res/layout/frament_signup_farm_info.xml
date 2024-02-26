@@ -78,9 +78,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_square_ac"
-                    android:hint="농장을 부를 별명을 작성해주세요 (2~6자)"
+                    android:hint="농장을 부를 별명을 작성해주세요 (1~6자)"
                     android:paddingVertical="20dp"
                     android:textColor="@color/gray1"
+                    android:inputType="text"
+                    android:maxLength="6"
                     android:textColorHint="@color/gray3"
                     android:textSize="13sp" />
 
@@ -102,6 +104,7 @@
                     android:hint="농장이 위치한 주소의 우편번호를 알려주세요"
                     android:paddingVertical="20dp"
                     android:textColor="@color/gray1"
+                    android:inputType="number"
                     android:textColorHint="@color/gray3"
                     android:textSize="13sp" />
 

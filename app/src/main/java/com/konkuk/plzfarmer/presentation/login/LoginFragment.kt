@@ -35,8 +35,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 },
                 onError = {
                     if (it.status == 404) {
-                        val (id, email) = getUserInfo()
-                        viewModel.signUpRequest = SignUpRequest(userId = id, userEmail = email)
                         viewModel.gotoFragment(LoginPage.NICKNAME)
                     }
                 },
@@ -46,8 +44,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    private fun onKakaoLoginSucceed(id: String) {
+    private fun onKakaoLoginSucceed(id: String, email: String) {
         viewModel.requestLogin(id)
+        viewModel.signUpRequest = SignUpRequest(userEmail = email, userId = id)
     }
 
     private fun onKakaoBtnClicked() {
@@ -71,8 +70,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 )
             } else if (token != null) {
                 Log.i(TAG, "카카오톡으로 로그인 성공")
-                val (id, _) = getUserInfo()
-                onKakaoLoginSucceed(id)
+                getUserInfo()
             }
         }
     }
@@ -84,12 +82,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             Log.e(TAG, "카카오계정으로 로그인 실패", error)
         } else if (token != null) {
             Log.i(TAG, "카카오계정으로 로그인 성공")
-            val (id, _) = getUserInfo()
-            onKakaoLoginSucceed(id)
+            getUserInfo()
         }
     }
 
-    private fun getUserInfo(): Pair<String,String> {
+    private fun getUserInfo() {
         //카카오 서버로부터 계정의 id와 email을 가져옴
         var id = ""
         var email = ""
@@ -99,8 +96,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             } else if (user != null) {
                 id = user.id.toString()
                 email = user.kakaoAccount?.email.toString()
+                onKakaoLoginSucceed(id, email)
             }
         }
-        return Pair(id, email)
     }
 }

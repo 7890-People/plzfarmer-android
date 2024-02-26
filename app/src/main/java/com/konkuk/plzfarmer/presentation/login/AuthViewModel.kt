@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.sign
 
 class AuthViewModel(val repository: AuthRepository) : ViewModel() {
 
@@ -43,6 +44,15 @@ class AuthViewModel(val repository: AuthRepository) : ViewModel() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 _duplicateResponse.postValue(repository.checkDuplicate(nickname))
+            }
+        }
+    }
+
+
+    fun requestSignUp() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                repository.requestSignUp(signUpRequest)
             }
         }
     }
