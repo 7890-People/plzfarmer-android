@@ -128,6 +128,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
             return@setOnItemSelectedListener true
         }
+        binding.btnv.itemIconTintList = null; //아이콘이 테마색으로 변경되는 것을 막기위해서 Tint를 초기화
     }
 
     fun setBtnvVisibility(visibility: Boolean) {

@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/btnv_home"
-        android:icon="@drawable/btnv_icon_home"
+        android:icon="@drawable/btnv_selector_home"
         android:title="홈"
         android:enabled="true"
         app:showAsAction="always"
@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/btnv_community"
-        android:icon="@drawable/btnv_icon_search"
+        android:icon="@drawable/btnv_selector_search"
         android:title="질병 정보"
         app:showAsAction="always"
         android:enabled="true" />
@@ -24,14 +24,14 @@
 
     <item
         android:id="@+id/btnv_search"
-        android:icon="@drawable/btnv_icon_community"
+        android:icon="@drawable/btnv_selector_community"
         app:showAsAction="always"
         android:title="커뮤니티"
         android:enabled="true" />
 
     <item
         android:id="@+id/btnv_notice"
-        android:icon="@drawable/btnv_icon_notice"
+        android:icon="@drawable/btnv_selector_notice"
         app:showAsAction="always"
         android:title="알림"
         android:enabled="true" />
