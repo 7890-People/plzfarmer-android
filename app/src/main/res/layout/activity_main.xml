@@ -40,6 +40,7 @@
                 app:menu="@menu/btnv_menu"
                 app:itemTextColor="@drawable/btnv_selector_color"
                 app:itemIconTint="@drawable/btnv_selector_color"
+                android:paddingHorizontal="13dp"
                 tools:ignore="SmallSp" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
