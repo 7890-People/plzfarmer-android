@@ -19,15 +19,13 @@ import kotlinx.coroutines.launch
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val TAG: String = "MainActivity"
     override val layoutRes: Int = R.layout.activity_main
-    lateinit var mainViewModel: MainViewModel
+    private val mainViewModel: MainViewModel by lazy{
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
 
     private val homeFragment by lazy {
         supportFragmentManager.findFragmentByTag(HomeFragment::class.java.name)
             ?: HomeFragment()
-    }
-
-    override fun initViewModel() {
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
     }
 
     override fun afterViewCreated() {

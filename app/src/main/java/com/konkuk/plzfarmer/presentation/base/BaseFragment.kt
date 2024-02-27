@@ -15,7 +15,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     private var _binding: T? = null
     protected val binding get() = _binding!!
 
-    abstract val TAG: String // fragment 태그
+    open val TAG: String = this.javaClass.simpleName
     abstract val layoutRes: Int // 바인딩에 필요한 layout
     private var toast: Toast? = null //토스트 보관 변수
 

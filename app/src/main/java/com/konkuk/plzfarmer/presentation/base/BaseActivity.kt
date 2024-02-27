@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
 
-    abstract val TAG: String // 액티비티 태그
+    open val TAG: String = this.javaClass.simpleName
     lateinit var binding: T //데이터 바인딩
     abstract val layoutRes: Int // 바인딩에 필요한 layout
     private var toast: Toast? = null //토스트 보관 변수
@@ -24,7 +24,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.lifecycleOwner = this
         setFullScreen()
-        initViewModel()
         afterViewCreated()
     }
 
@@ -62,8 +61,6 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
         startActivity(intent)
     }
 
-
-    abstract fun initViewModel()
     abstract fun afterViewCreated()
 
     //  토스트 생성
@@ -76,5 +73,4 @@ abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
     fun setFragment(id: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(id, fragment).commit()
     }
-
 }

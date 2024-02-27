@@ -2,23 +2,65 @@
 <resources>
     <style name="NanumTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/nanum_square_ac</item>
+        <item name="android:textColor">@color/gray1</item>
     </style>
 
     <style name="NanumButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
         <item name="android:fontFamily">@font/nanum_square_ac</item>
+        <item name="android:textColor">@color/gray1</item>
     </style>
 
     <style name="NanumEditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
         <item name="android:fontFamily">@font/nanum_square_ac</item>
+        <item name="android:textColor">@color/gray1</item>
     </style>
 
     <style name="NanumRadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
         <item name="android:fontFamily">@font/nanum_square_ac</item>
+        <item name="android:textColor">@color/gray1</item>
     </style>
 
     <style name="NanumCheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
         <item name="android:fontFamily">@font/nanum_square_ac</item>
+        <item name="android:textColor">@color/gray1</item>
     </style>
 
+    <style name="CustomTextAppearanceSmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">9sp</item>
+        <item name="fontFamily">@font/nanum_square_ac</item>
+    </style>
 
+    
+    <!--Alert Dialog Style-->
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:textColor">@color/gray1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="font">@font/nanum_square_ac_bold</item>
+        <item name="android:textSize">15sp</item>
+
+    </style>
+
+    <style name="Widget.App.DialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/green1</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">40dp</item>
+    </style>
+
+    <style name="GEATextAppearance" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/gangwong_edu_all_bold</item>
+        <item name="android:fontFamily">@font/gangwong_edu_all_bold</item>
+    </style>
 </resources>

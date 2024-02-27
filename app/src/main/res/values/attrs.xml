@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomSelectButton">
+        <attr name="image_src" format="reference"/>
+        <attr name="label_string" format="string"/>
+    </declare-styleable>
+</resources>

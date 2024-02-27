@@ -11,10 +11,16 @@
     <!--CUSTOM COLORS -->
     <color name="transparent">#00FFFFFF</color>
     <color name="background">#FFF2F3ED</color>
+    <color name="stroke">#FFDADADA</color>
+
     <color name="gray1">#FF4D4D4D</color>
-    <color name="gray5">#BEBEBE</color>
-    <color name="gray6">#808080</color>
-    <color name="stroke">#DADADA</color>
-    <color name="brown">#A4946A</color>
+    <color name="gray2">#FFDADADA</color>
+    <color name="gray3">#FFB3B3B3</color>
+    <color name="gray5">#FFBEBEBE</color>
+    <color name="gray6">#FF808080</color>
+
+    <color name="green1">#FF68C182</color>
+
+    <color name="brown">#FFA4946A</color>
 
 </resources>
