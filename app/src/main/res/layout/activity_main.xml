@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.main.MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <FrameLayout
+            android:id="@+id/mainFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"/>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/transparent"
+            app:contentInsetStart="0dp"
+            app:elevation="0dp"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/btnv"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/btnv_background_img"
+                android:textSize="10sp"
+                app:elevation="0dp"
+                app:itemIconSize="20dp"
+                app:itemPaddingTop="12dp"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/btnv_menu"
+                tools:ignore="SmallSp" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:foregroundTint="@color/background"
+            android:src="@drawable/btnv_icon_camera"
+            app:tint = "@null"
+            app:backgroundTint="@color/stroke"
+            app:borderWidth="0.5dp"
+            app:elevation="0dp"
+            app:fabCustomSize="60dp"
+            android:layout_marginBottom="39dp"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="30dp" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
