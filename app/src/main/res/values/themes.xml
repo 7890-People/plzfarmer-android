@@ -31,10 +31,21 @@
         <item name="fontFamily">@font/nanum_square_ac</item>
         <item name="colorOnSurface">@color/gray1</item>
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.App.Title.Text
+        </item>
         <item name="buttonBarPositiveButtonStyle">@style/Widget.App.DialogButton</item>
         <item name="buttonBarNegativeButtonStyle">@style/Widget.App.DialogButton</item>
     </style>
 
+    <style name="ChipIndicatorStyle" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:textAppearance">@style/GEATextAppearance</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="android:checkable">false</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+        <item name="chipStrokeColor">@color/brown</item>
+
+    </style>
 
 </resources>
