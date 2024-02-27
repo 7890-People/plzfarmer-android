@@ -47,6 +47,14 @@ class AuthViewModel(val repository: AuthRepository) : ViewModel() {
         }
     }
 
+    fun requestSignUp() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                repository.requestSignUp(signUpRequest)
+            }
+        }
+    }
+
     lateinit var signUpRequest: SignUpRequest
 
 }

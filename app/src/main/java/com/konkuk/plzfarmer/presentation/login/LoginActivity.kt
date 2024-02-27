@@ -30,6 +30,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
     override fun afterViewCreated() {
         collectPage()
+        setBackBtn()
     }
 
     private val loginFragment by lazy {

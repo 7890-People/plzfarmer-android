@@ -53,4 +53,14 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
     </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">40dp</item>
+    </style>
+
+    <style name="GEATextAppearance" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/gangwong_edu_all_bold</item>
+        <item name="android:fontFamily">@font/gangwong_edu_all_bold</item>
+    </style>
 </resources>

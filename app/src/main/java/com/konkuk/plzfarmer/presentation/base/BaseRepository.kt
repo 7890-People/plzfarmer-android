@@ -13,10 +13,7 @@ abstract class BaseRepository {
             Log.d("Network", "API Succeed Response: $response")
             return ApiState.Success(response.body())
         } else {
-            if (response.errorBody() == null) return ApiState.Error(ResponseFailedException(1004))
-
-            val errorBody = response.errorBody()!!.string()
-            return ApiState.Error(ResponseFailedException(JSONObject(errorBody).getInt("status")))
+            return ApiState.Error(ResponseFailedException(response.code()))
         }
     }
 

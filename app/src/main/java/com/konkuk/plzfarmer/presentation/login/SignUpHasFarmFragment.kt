@@ -13,8 +13,12 @@ class SignUpHasFarmFragment : BaseFragment<FragmentSignupHasFarmBinding>() {
         binding.apply {
             nextBtn.setOnClickListener {
                 if (yesBtn.isSelected) viewModel.gotoFragment(LoginPage.FARMINFO)
-                else {
-                    //gotoMainActivity
+                else if (noBtn.isSelected) {
+                    //TODO: 가입 POST
+                    viewModel.requestSignUp()
+                    //TODO: gotoMainActivity
+                } else{
+                    showToast("아무것도 선택하지 않았어요")
                 }
             }
         }
