@@ -100,4 +100,5 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }
     }
+    
 }

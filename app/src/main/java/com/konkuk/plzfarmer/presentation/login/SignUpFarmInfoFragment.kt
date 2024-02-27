@@ -1,3 +1,4 @@
+
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.konkuk.plzfarmer.R
@@ -37,6 +38,7 @@ class SignUpFarmInfoFragment : BaseFragment<FramentSignupFarmInfoBinding>() {
                 Log.d(TAG, viewModel.signUpRequest.toString())
             }
         }
-
     }
+    
+    
 }

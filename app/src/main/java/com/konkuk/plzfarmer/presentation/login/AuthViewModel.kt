@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.math.sign
 
 class AuthViewModel(val repository: AuthRepository) : ViewModel() {
 
@@ -47,7 +46,6 @@ class AuthViewModel(val repository: AuthRepository) : ViewModel() {
             }
         }
     }
-
 
     fun requestSignUp() {
         viewModelScope.launch {
