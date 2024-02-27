@@ -38,6 +38,8 @@
                 app:itemPaddingTop="12dp"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/btnv_menu"
+                app:itemTextColor="@drawable/btnv_selector_color"
+                app:itemIconTint="@drawable/btnv_selector_color"
                 tools:ignore="SmallSp" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
