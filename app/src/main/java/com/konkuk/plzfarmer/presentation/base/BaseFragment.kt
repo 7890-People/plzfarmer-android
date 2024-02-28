@@ -1,3 +1,5 @@
+package com.konkuk.plzfarmer.presentation.base
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater

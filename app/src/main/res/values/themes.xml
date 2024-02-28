@@ -16,6 +16,15 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
+        <!--바텀 네비게이션 Material2 적용-->
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
+        <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.Colored</item>
+        <item name="floatingActionButtonStyle">@style/Widget.MaterialComponents.FloatingActionButton</item>
+
+        <!--타이틀바, 상태바 없애기-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
         <item name="android:buttonStyle">@style/NanumButtonStyle</item>
         <item name="android:editTextStyle">@style/NanumEditTextStyle</item>
         <item name="android:radioButtonStyle">@style/NanumCheckboxStyle</item>
@@ -45,7 +54,6 @@
         <item name="android:checkable">false</item>
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
         <item name="chipStrokeColor">@color/brown</item>
-
     </style>
 
 </resources>

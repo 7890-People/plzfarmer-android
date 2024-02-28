@@ -1,6 +1,5 @@
 package com.konkuk.plzfarmer.presentation.camera
 
-import BaseFragment
 import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
@@ -15,9 +14,11 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentCameraBinding
+import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.Locale
 

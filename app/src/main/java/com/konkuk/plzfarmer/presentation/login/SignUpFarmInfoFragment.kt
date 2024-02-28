@@ -3,6 +3,7 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FramentSignupFarmInfoBinding
+import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.presentation.login.AuthViewModel
 
 class SignUpFarmInfoFragment : BaseFragment<FramentSignupFarmInfoBinding>() {

@@ -5,6 +5,7 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentSignupNicknameBinding
+import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.presentation.login.AuthViewModel
 import com.konkuk.plzfarmer.presentation.login.LoginPage
 

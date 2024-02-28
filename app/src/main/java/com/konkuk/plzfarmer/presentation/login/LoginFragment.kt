@@ -1,6 +1,6 @@
 package com.konkuk.plzfarmer.presentation.login
 
-import BaseFragment
+
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.kakao.sdk.auth.model.OAuthToken
@@ -9,6 +9,7 @@ import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentLoginBinding
+import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.remote.request.SignUpRequest
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {

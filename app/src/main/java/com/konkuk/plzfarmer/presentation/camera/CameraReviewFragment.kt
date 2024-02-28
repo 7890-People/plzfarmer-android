@@ -1,9 +1,9 @@
 package com.konkuk.plzfarmer.presentation.camera
 
-import BaseFragment
 import com.bumptech.glide.Glide
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentCameraReviewBinding
+import com.konkuk.plzfarmer.presentation.base.BaseFragment
 
 class CameraReviewFragment : BaseFragment<FragmentCameraReviewBinding>() {
     override val TAG: String = "FragmentCheckPhoto"
