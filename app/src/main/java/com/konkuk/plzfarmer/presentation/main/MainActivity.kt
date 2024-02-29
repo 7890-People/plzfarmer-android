@@ -13,12 +13,16 @@ import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityMainBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
 import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
+import com.konkuk.plzfarmer.remote.repository.WeatherRepository
+import com.konkuk.plzfarmer.utils.ViewModelFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val TAG: String = "MainActivity"
     override val layoutRes: Int = R.layout.activity_main
+    lateinit var weatherViewModel: WeatherViewModel
+
     private val mainViewModel: MainViewModel by lazy{
         ViewModelProvider(this)[MainViewModel::class.java]
     }
@@ -33,6 +37,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         collectBtnvFlow()
         setBottomNavi()
         setBackBtn()
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        weatherViewModel = ViewModelProvider(this, ViewModelFactory(WeatherRepository()))[WeatherViewModel::class.java]
     }
 
     private fun getFragment(page: MainPage): Fragment {
