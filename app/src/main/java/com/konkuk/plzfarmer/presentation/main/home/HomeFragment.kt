@@ -15,6 +15,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -38,13 +39,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val weatherViewModel: WeatherViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by activityViewModels()
     private val CODE_GPS: Int = 300
+
+    lateinit var myPlantRVAdapter: MyPlantRVAdapter
+
     override fun afterViewCreated() {
         Log.d(TAG, "afterViewCreated" )
+        initData()
+        initObservers()
+        initRecyclerViews()
+    }
+
+    private fun initData() {
         //농장 정보가 없을 때
         checkLocationPermission()
         binding.homeFarmTitleTv.text =  "농장을 부탁해"
-
-        initObservers()
+        homeViewModel.getMyPlantList() // 나의 식물 리스트
     }
 
     private fun initObservers() {
@@ -60,7 +69,32 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                 })
         }
+        homeViewModel.myPlantList.observe(this) {
+            it.byState(
+                onSuccess = { response ->
+                    myPlantRVAdapter.myPlantList = response
+                    myPlantRVAdapter.notifyDataSetChanged()
+                },
+                onError = {
+
+                },
+                onLoading = {
+
+                })
+        }
     }
+
+    private fun initRecyclerViews() {
+        myPlantRVAdapter = MyPlantRVAdapter(onMyPlantItemClicked)
+        binding.homeMyPlantRv.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.homeMyPlantRv.adapter = myPlantRVAdapter
+    }
+
+    private val onMyPlantItemClicked: (myPlant: MyPlantVO) -> Unit = {
+
+    }
+
 
     // 위도, 경도 값 받아오기 ( 퍼미션 린트처리- 퍼미션 꼭 확인하고 사용하기)
     @SuppressLint("MissingPermission")
