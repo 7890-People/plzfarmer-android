@@ -2,17 +2,29 @@ package com.konkuk.plzfarmer.presentation.main.home
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.util.Log
 import android.view.View
+import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.motion.widget.Debug.getLocation
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.location.SettingsClient
+import com.google.android.gms.tasks.CancellationToken
+import com.google.android.gms.tasks.CancellationTokenSource
+import com.google.android.gms.tasks.OnTokenCanceledListener
+import com.google.android.gms.tasks.Task
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentHomeBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
@@ -24,14 +36,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val TAG: String = "HomeFragment"
     override val layoutRes: Int = R.layout.fragment_home
     private val weatherViewModel: WeatherViewModel by activityViewModels()
-
+    private val CODE_GPS: Int = 300
     override fun afterViewCreated() {
+        Log.d(TAG, "afterViewCreated" )
         //농장 정보가 없을 때
         checkLocationPermission()
         binding.homeFarmTitleTv.text =  "농장을 부탁해"
 
         initObservers()
     }
+
     private fun initObservers() {
         weatherViewModel.weatherResponse.observe(this) {
             it.byState(
@@ -49,33 +63,77 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     // 위도, 경도 값 받아오기 ( 퍼미션 린트처리- 퍼미션 꼭 확인하고 사용하기)
     @SuppressLint("MissingPermission")
-    private fun getCurrentLocationAndWeather() {
+    private fun getLastLocationAndWeather() {
+        Log.d(TAG, "getLastLocationAndWeather 실행됨")
         val fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
 
         fusedLocationProviderClient.lastLocation
             .addOnSuccessListener { success: Location? ->
-                success?.let { location ->
-                    weatherViewModel.getCurrentWeather(location.latitude, location.longitude) // 현재 날씨 정보 api 호출
-                    val address = getAddress(location.latitude, location.longitude)?.get(0) // 위도경도값 => 주소 정보 얻기
+                Log.d(TAG, "getLastLocationAndWeather success : ${success.toString()}")
+                if (success != null) {
+                    Log.d(TAG, "${success.latitude}/${success.longitude}")
+                    weatherViewModel.getCurrentWeather(success.latitude, success.longitude) // 현재 날씨 정보 api 호출
+                    val address = getAddress(success.latitude, success.longitude)?.get(0) // 위도경도값 => 주소 정보 얻기
                     binding.homeFarmLocationTv.text = address?.let {
-                        "현위치 : ${it.adminArea} ${it.locality} ${it.thoroughfare}"
+                        "현위치 : ${it.getAddressLine(0)}"
                     }
+                } else {
+                    // 위치 정보가 null일 때(위치 권한은 동의 되어있는데, gps가 안 켜져있을 때) 처리할 코드
+                    Log.d(TAG, "fusedLocationProviderClient.lastLocation Success인데 location이 null임")
+                    setDefaultLocationAndWeather("gps가 안 켜져있어")
                 }
             }
             .addOnFailureListener { fail ->
                 // 기본값인 서울을 기준으로 날씨 표시
-                val defaultLatitude = 37.540957955055
-                val defaultLongitute = 127.08278172427
-                weatherViewModel.getCurrentWeather(   defaultLatitude, defaultLongitute) // 현재 날씨 정보 api 호출
-                val address = getAddress(defaultLatitude, defaultLongitute)?.get(0) // 위도경도값 => 주소 정보 얻기
-                Log.d("address", address.toString())
-                binding.homeFarmLocationTv.text = address?.let {
-                    "${it.adminArea} ${it.locality} ${it.thoroughfare}"
-                }
-                binding.homeFarmLocationPermissonTv.text = "(위치 권한이 없어 건국대를 기준으로 날씨 정보를 제공합니다.)"
-                binding.homeFarmLocationPermissonTv.visibility = View.VISIBLE
+                Log.d(TAG, "fusedLocationProviderClient.lastLocation로 lat/lon 얻어오는거 실패함")
+                setDefaultLocationAndWeather("")
             }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getCurrentLocationAndWeather() {
+        Log.d(TAG, "getCurrentLocationAndWeather 실행됨")
+        val fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, object : CancellationToken() {
+            override fun onCanceledRequested(p0: OnTokenCanceledListener) = CancellationTokenSource().token
+            override fun isCancellationRequested() = false
+        })
+            .addOnSuccessListener { success: Location? ->
+                Log.d(TAG, "getCurrentLocationAndWeather success : ${success.toString()}")
+                if (success != null) {
+                    Log.d(TAG, "${success.latitude}/${success.longitude}")
+                    weatherViewModel.getCurrentWeather(success.latitude, success.longitude) // 현재 날씨 정보 api 호출
+                    val address = getAddress(success.latitude, success.longitude)?.get(0) // 위도경도값 => 주소 정보 얻기
+                    binding.homeFarmLocationTv.text = address?.let {
+                        "현위치 : ${it.getAddressLine(0)}"
+                    }
+                } else {
+                    // 위치 정보가 null일 때(위치 권한은 동의 되어있는데, gps가 안 켜져있을 때) 처리할 코드
+                    Log.d(TAG, "fusedLocationProviderClient.lastLocation Success인데 location이 null임")
+                    setDefaultLocationAndWeather("gps가 안 켜져있어")
+                }
+            }
+            .addOnFailureListener { fail ->
+                // 기본값인 서울을 기준으로 날씨 표시
+                Log.d(TAG, "fusedLocationProviderClient.lastLocation로 lat/lon 얻어오는거 실패함")
+                setDefaultLocationAndWeather("")
+            }
+    }
+
+    private fun setDefaultLocationAndWeather(msg: String){
+        val defaultLatitude = 37.540957955055
+        val defaultLongitute = 127.08278172427
+        weatherViewModel.getCurrentWeather(   defaultLatitude, defaultLongitute) // 현재 날씨 정보 api 호출
+        val address = getAddress(defaultLatitude, defaultLongitute)?.get(0) // 위도경도값 => 주소 정보 얻기
+        Log.d(TAG, address.toString())
+        binding.homeFarmLocationTv.text = address?.let {
+            "${it.getAddressLine(0)}"
+        }
+        binding.homeFarmLocationPermissonTv.text = "(${msg} 건국대를 기준으로 날씨 정보를 제공합니다.)"
+        binding.homeFarmLocationPermissonTv.visibility = View.VISIBLE
     }
 
     // 위도, 경도 => 주소 값
@@ -99,9 +157,66 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         // 권한 허용이 되어있다면
         if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
-            getCurrentLocationAndWeather()
+            Log.d(TAG, "위치 권한 허용되어있음")
+            checkGPS()
         }else{ // 권한 허용이 안 되어있다면 => 권한 요청
+            Log.d(TAG, "위치 권한 허용되어 있지 않음")
             locationPermissionRequest.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION))
+        }
+    }
+
+    private fun checkGPS() {
+        val locationRequest = LocationRequest.create().apply {
+            interval = 10000
+            fastestInterval = 5000
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+
+        val locationPermissionLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // 동의가 안되어 있었는데, 사용자가 GPS 동의를 한 경우
+                Log.d(TAG, "gps 동의 완료")
+                showToast("위치 정보가 켜졌습니다.")
+                getCurrentLocationAndWeather()
+            } else {
+                // 사용자가 GPS 동의를 거부한 경우
+                // 필요한 처리를 수행하거나 메시지를 표시할 수 있음
+            }
+        }
+
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+
+        val client: SettingsClient = LocationServices.getSettingsClient(requireActivity())
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+
+        task.addOnSuccessListener {
+            // GPS가 켜져있었을 경우
+            getLastLocationAndWeather()
+        }
+        task.addOnFailureListener { exception ->
+            // GPS가 꺼져있을 경우- gps 켜달라고 요청
+            if (exception is ResolvableApiException) {
+                Log.d(TAG, "OnFailure")
+                try {
+                    locationPermissionLauncher.launch(IntentSenderRequest.Builder(exception.resolution).build())
+                } catch (sendEx: IntentSender.SendIntentException) {
+                    Log.d(TAG, sendEx.message.toString())
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d(TAG, "onActivityResult")
+        if(requestCode == CODE_GPS){
+            if(resultCode == Activity.RESULT_OK){
+                Log.d(TAG, "RESULT_OK")
+                getCurrentLocationAndWeather()
+            }else {
+                //유저가 거부한 경우의 로직
+            }
         }
     }
 
@@ -112,15 +227,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         when {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
                 // Precise location access granted.
-                Log.d("permission", "ACCESS_FINE_LOCATION 허용됨")
-                getCurrentLocationAndWeather()
+                Log.d(TAG, "ACCESS_FINE_LOCATION 허용됨")
+                getLastLocationAndWeather()
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
                 // Only approximate location access granted.
-                Log.d("permission", "ACCESS_COARSE_LOCATION 허용됨")
-                getCurrentLocationAndWeather()
+                Log.d(TAG, "ACCESS_COARSE_LOCATION 허용됨")
+                getLastLocationAndWeather()
             } else -> {
                 // 위치 권한 허용 안됨.
+                setDefaultLocationAndWeather("위치 권한이 없어")
             }
         }
     }
@@ -171,7 +287,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 binding.homeWeatherIconIv.setImageResource(R.drawable.home_icon_weather_50dn)
                 binding.homeWeatherDescriptionTv.text = "안개가 꼈어요"
             }
-            else -> Log.d("weather", "해당되는 icon이 없음")
+            else -> Log.d(TAG, "해당되는 icon이 없음")
         }
     }
 }
