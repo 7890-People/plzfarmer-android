@@ -77,4 +77,7 @@ dependencies {
     //lottie animation
     implementation ("com.airbnb.android:lottie:5.0.2")
 
+    // 위도, 경도
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
 }
