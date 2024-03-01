@@ -36,6 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val TAG: String = "HomeFragment"
     override val layoutRes: Int = R.layout.fragment_home
     private val weatherViewModel: WeatherViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
     private val CODE_GPS: Int = 300
     override fun afterViewCreated() {
         Log.d(TAG, "afterViewCreated" )
