@@ -110,6 +110,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     binding.homeFarmLocationTv.text = address?.let {
                         "현위치 : ${it.getAddressLine(0)}"
                     }
+                    binding.homeFarmLocationPermissonTv.visibility = View.GONE
                 } else {
                     // 위치 정보가 null일 때(위치 권한은 동의 되어있는데, gps가 안 켜져있을 때) 처리할 코드
                     Log.d(TAG, "fusedLocationProviderClient.lastLocation Success인데 location이 null임")
@@ -158,6 +159,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         // 권한 허용이 되어있다면
         if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
             Log.d(TAG, "위치 권한 허용되어있음")
+            getLastLocationAndWeather()
             checkGPS()
         }else{ // 권한 허용이 안 되어있다면 => 권한 요청
             Log.d(TAG, "위치 권한 허용되어 있지 않음")
@@ -192,7 +194,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         task.addOnSuccessListener {
             // GPS가 켜져있었을 경우
-            getLastLocationAndWeather()
         }
         task.addOnFailureListener { exception ->
             // GPS가 꺼져있을 경우- gps 켜달라고 요청
