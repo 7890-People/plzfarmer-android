@@ -19,6 +19,8 @@ import kotlinx.coroutines.launch
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val TAG: String = "MainActivity"
     override val layoutRes: Int = R.layout.activity_main
+    lateinit var communityViewModel: CommunityViewModel
+
     private val mainViewModel: MainViewModel by lazy{
         ViewModelProvider(this)[MainViewModel::class.java]
     }
