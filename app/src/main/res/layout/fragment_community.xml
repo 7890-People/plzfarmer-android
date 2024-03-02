@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/community_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="커뮤니티"
+            android:textSize="16sp"
+            android:fontFamily="@font/gangwong_edu_all_bold"
+            android:textColor="@color/gray1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp"/>
+
+        <RadioGroup
+            android:id="@+id/community_filter_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/community_title_tv"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:checkedButton="@id/community_filter_all_rb">
+
+            <RadioButton
+                android:id="@+id/community_filter_all_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/community_selector_filter_btn"
+                android:text="전체"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@drawable/community_selector_filter_text"
+                android:fontFamily="@font/gangwong_edu_all_bold"/>
+
+            <RadioButton
+                android:id="@+id/community_filter_chat_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/community_selector_filter_btn"
+                android:text="잡담"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@drawable/community_selector_filter_text"
+                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:layout_marginStart="17dp"/>
+
+            <RadioButton
+                android:id="@+id/community_filter_question_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:paddingHorizontal="15dp"
+                android:button="@null"
+                android:background="@drawable/community_selector_filter_btn"
+                android:text="질문"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@drawable/community_selector_filter_text"
+                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:layout_marginStart="17dp"/>
+
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/community_post_btn"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:background="@drawable/common_shape_rect_r20_filled"
+            android:backgroundTint="@color/green1"
+            android:text="글쓰기"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gangwong_edu_all_bold"
+            app:layout_constraintTop_toTopOf="@id/community_filter_rg"
+            app:layout_constraintBottom_toBottomOf="@id/community_filter_rg"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_posts_list_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/community_filter_rg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_post"
+            android:overScrollMode="never"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideInset">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="50dp"
+            android:background="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
