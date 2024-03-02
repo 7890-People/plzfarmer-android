@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentHomeBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
+import com.konkuk.plzfarmer.presentation.common.RecyclerViewDecoration
 import com.konkuk.plzfarmer.presentation.main.WeatherViewModel
 import java.io.IOException
 import java.util.Locale
@@ -41,13 +42,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val CODE_GPS: Int = 300
 
     lateinit var myPlantRVAdapter: MyPlantRVAdapter
+    lateinit var recentHistoryRVAdapter: RecentHistoryRVAdapter
 
     override fun afterViewCreated() {
         Log.d(TAG, "afterViewCreated" )
         initData()
         initObservers()
         initRecyclerViews()
+        initClickListener()
     }
+
 
     private fun initData() {
         //농장 정보가 없을 때
@@ -82,17 +86,49 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                 })
         }
+        homeViewModel.recentHistoryList.observe(this) {
+            it.byState(
+                onSuccess = { response ->
+                    recentHistoryRVAdapter.recentHistoryList = response
+                    recentHistoryRVAdapter.notifyDataSetChanged()
+                },
+                onError = {
+
+                },
+                onLoading = {
+
+                })
+        }
     }
 
     private fun initRecyclerViews() {
+        // 나의 식물 리사이클러뷰
+        binding.homeRecentHistoryRv.addItemDecoration(RecyclerViewDecoration(10)) // 수평 간격 설정
         myPlantRVAdapter = MyPlantRVAdapter(onMyPlantItemClicked)
         binding.homeMyPlantRv.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.homeMyPlantRv.adapter = myPlantRVAdapter
+
+        // 최근 진단 기록 리사이클러뷰
+        binding.homeRecentHistoryRv.addItemDecoration(RecyclerViewDecoration(10)) // 수평 간격 설정
+        recentHistoryRVAdapter = RecentHistoryRVAdapter(onRecentHistoryItemClicked)
+        binding.homeRecentHistoryRv.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.homeRecentHistoryRv.adapter = recentHistoryRVAdapter
     }
 
     private val onMyPlantItemClicked: (myPlant: MyPlantVO) -> Unit = {
+        Log.d(TAG, "onMyPlantItemClicked")
+    }
 
+    private val onRecentHistoryItemClicked: (recentHistory: RecentHistoryItemVO) -> Unit = {
+        Log.d(TAG, "onRecentHistoryItemClicked")
+    }
+
+    private fun initClickListener() {
+        binding.homeRecentHistoryMoreIv.setOnClickListener {
+            Log.d(TAG, "homeRecentHistoryMoreIv Clicked")
+        }
     }
 
 
