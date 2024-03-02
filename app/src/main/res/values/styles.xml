@@ -60,7 +60,7 @@
     </style>
 
     <style name="GEATextAppearance" parent="TextAppearance.Material3.LabelLarge">
-        <item name="fontFamily">@font/gangwong_edu_all_bold</item>
-        <item name="android:fontFamily">@font/gangwong_edu_all_bold</item>
+        <item name="fontFamily">@font/gangwon_edu_all_bold</item>
+        <item name="android:fontFamily">@font/gangwon_edu_all_bold</item>
     </style>
 </resources>
