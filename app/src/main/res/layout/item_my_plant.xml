@@ -24,6 +24,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{myPlant.plantTypeKor}"
                 android:textSize="14sp"
+                android:fontFamily="@font/gangwon_edu_all_bold"
+                android:textColor="@color/gray1"
                 app:layout_constraintStart_toStartOf="@id/plant_type_eng_tv"
                 app:layout_constraintBottom_toTopOf="@id/plant_type_eng_tv"/>
 
@@ -33,6 +35,8 @@
                 android:layout_height="wrap_content"
                 android:text="@{myPlant.plantTypeEng}"
                 android:textSize="10sp"
+                android:fontFamily="@font/gangwon_edu_all_bold"
+                android:textColor="@color/gray1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="12dp"

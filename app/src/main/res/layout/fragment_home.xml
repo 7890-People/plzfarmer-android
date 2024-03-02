@@ -45,6 +45,8 @@
                     android:textAlignment="center"
                     android:layout_marginHorizontal="25dp"
                     android:textSize="14sp"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
+                    android:textColor="@color/white2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/home_farm_title_left_hole_cv"
@@ -92,6 +94,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="12sp"
+            android:fontFamily="@font/gangwon_edu_all_bold"
+            android:textColor="@color/gray1"
             android:layout_marginTop="23dp"/>
 
         <!--농장 주소 위치 권한 안내-->
@@ -103,6 +107,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="7sp"
+            android:fontFamily="@font/gangwon_edu_all_bold"
+            android:textColor="@color/gray1"
             android:layout_marginTop="5dp"
             android:visibility="gone"/>
 
@@ -121,10 +127,13 @@
             android:id="@+id/home_weather_description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:fontFamily="@font/gangwon_edu_all_bold"
+            android:textColor="@color/gray1"
             app:layout_constraintTop_toBottomOf="@id/home_weather_icon_iv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginTop="14dp"/>
 
         <!--나의 식물-->
         <androidx.cardview.widget.CardView
@@ -153,6 +162,8 @@
                     android:layout_height="wrap_content"
                     android:text="나의 식물"
                     android:textSize="14sp"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
+                    android:textColor="@color/gray1"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="20dp"
@@ -254,6 +265,8 @@
                     android:layout_marginTop="20dp"
                     android:text="최근 진단 기록"
                     android:textSize="14sp"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
+                    android:textColor="@color/gray1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -287,10 +300,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
