@@ -12,6 +12,7 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="background">#FFF2F3ED</color>
     <color name="stroke">#FFDADADA</color>
+    <color name="stroke2">#FFCECECE</color>
 
     <color name="gray1">#FF4D4D4D</color>
     <color name="gray2">#FFDADADA</color>
