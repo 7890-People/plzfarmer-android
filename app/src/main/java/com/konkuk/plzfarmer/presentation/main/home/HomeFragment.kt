@@ -58,6 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         checkLocationPermission()
         binding.homeFarmTitleTv.text =  "농장을 부탁해"
         homeViewModel.getMyPlantList() // 나의 식물 리스트
+        homeViewModel.getRecentHistoryList() // 최근 진단 기록 리스트
     }
 
     private fun initObservers() {
