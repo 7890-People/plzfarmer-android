@@ -11,7 +11,7 @@
         />
 
     <item
-        android:id="@+id/btnv_community"
+        android:id="@+id/btnv_search"
         android:icon="@drawable/btnv_selector_search"
         android:title="질병 정보"
         app:showAsAction="always"
@@ -23,7 +23,7 @@
         android:enabled="false"/>
 
     <item
-        android:id="@+id/btnv_search"
+        android:id="@+id/btnv_community"
         android:icon="@drawable/btnv_selector_community"
         app:showAsAction="always"
         android:title="커뮤니티"
