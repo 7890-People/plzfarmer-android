@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityMainBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
-import com.konkuk.plzfarmer.presentation.main.community.CommunityFragment
+import com.konkuk.plzfarmer.presentation.main.community.main.CommunityFragment
 import com.konkuk.plzfarmer.presentation.main.community.CommunityViewModel
 import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
 import com.konkuk.plzfarmer.remote.repository.CommunityRepository

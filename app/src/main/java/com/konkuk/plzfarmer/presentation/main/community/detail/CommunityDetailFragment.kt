@@ -1,4 +1,4 @@
-package com.konkuk.plzfarmer.presentation.main.community
+package com.konkuk.plzfarmer.presentation.main.community.detail
 
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentCommunityBinding

@@ -1,4 +1,4 @@
-package com.konkuk.plzfarmer.presentation.main.community
+package com.konkuk.plzfarmer.presentation.main.community.main
 
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +10,8 @@ import com.konkuk.plzfarmer.databinding.FragmentCommunityBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.presentation.common.RecyclerViewItemDecorationVertical
 import com.konkuk.plzfarmer.presentation.main.MainActivity
+import com.konkuk.plzfarmer.presentation.main.community.CommunityViewModel
+import com.konkuk.plzfarmer.presentation.main.community.detail.CommunityDetailFragment
 
 class CommunityFragment : BaseFragment<FragmentCommunityBinding>() {
     override val TAG: String = "CommunityFragment"

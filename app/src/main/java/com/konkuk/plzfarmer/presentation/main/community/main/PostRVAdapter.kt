@@ -1,4 +1,4 @@
-package com.konkuk.plzfarmer.presentation.main.community
+package com.konkuk.plzfarmer.presentation.main.community.main
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.konkuk.plzfarmer.databinding.ItemPostBinding
-import com.konkuk.plzfarmer.presentation.main.community.PostRVAdapter.MyViewHolder
+import com.konkuk.plzfarmer.presentation.main.community.main.PostRVAdapter.MyViewHolder
 
 
 class PostRVAdapter (

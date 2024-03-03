@@ -5,7 +5,7 @@
     <data>
         <variable
             name="post"
-            type="com.konkuk.plzfarmer.presentation.main.community.PostVO" />
+            type="com.konkuk.plzfarmer.presentation.main.community.main.PostVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,7 +1,7 @@
 package com.konkuk.plzfarmer.remote.repository
 
 import com.konkuk.plzfarmer.presentation.base.BaseRepository
-import com.konkuk.plzfarmer.presentation.main.community.PostVO
+import com.konkuk.plzfarmer.presentation.main.community.main.PostVO
 import com.konkuk.plzfarmer.remote.api.CommunityApi
 import com.konkuk.plzfarmer.utils.network.ApiState
 import com.konkuk.plzfarmer.utils.network.RetrofitClient

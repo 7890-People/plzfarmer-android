@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.konkuk.plzfarmer.presentation.main.community.main.PostVO
 import com.konkuk.plzfarmer.remote.repository.CommunityRepository
 import com.konkuk.plzfarmer.utils.network.ApiState
 import kotlinx.coroutines.Dispatchers

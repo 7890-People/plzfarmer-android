@@ -1,4 +1,4 @@
-package com.konkuk.plzfarmer.presentation.main.community
+package com.konkuk.plzfarmer.presentation.main.community.main
 
 class PostVO (
     //커뮤니티 게시글 recyclerView 아이템 데이터
