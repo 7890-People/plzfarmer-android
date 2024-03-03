@@ -1,6 +1,7 @@
 package com.konkuk.plzfarmer.remote.repository
 
 import com.konkuk.plzfarmer.presentation.base.BaseRepository
+import com.konkuk.plzfarmer.presentation.main.community.detail.CommentVO
 import com.konkuk.plzfarmer.presentation.main.community.main.PostVO
 import com.konkuk.plzfarmer.remote.api.CommunityApi
 import com.konkuk.plzfarmer.utils.network.ApiState
@@ -146,6 +147,43 @@ class CommunityRepository: BaseRepository() {
                 )
             )
         }
+    }
+
+    suspend fun getCommentList(): ApiState<List<CommentVO>> {
+        return ApiState.Success(
+            data = listOf(
+                CommentVO(
+                    commentProfileImage = null,
+                    commentWriterName = "졸프픙",
+                    commentContent = "저는 이렇게 해결했어요!",
+                    commentDateTime = "10-09  23:57"
+                ),
+                CommentVO(
+                    commentProfileImage = null,
+                    commentWriterName = "농부네 첫째",
+                    commentContent = "글이 너무 멋져요!",
+                    commentDateTime = "10-10  23:57"
+                ),
+                CommentVO(
+                    commentProfileImage = null,
+                    commentWriterName = "농부네 둘째",
+                    commentContent = "글이 너무 도움돼요!",
+                    commentDateTime = "10-11  13:23"
+                ),
+                CommentVO(
+                    commentProfileImage = null,
+                    commentWriterName = "농부네 셋째",
+                    commentContent = "글이 너무 멋져요잉!! 토마토에 이런 이상이 있다니 마음이 너무 슬프네요... 힘내세요! 응원하겠습니다",
+                    commentDateTime = "10-10  23:57"
+                ),
+                CommentVO(
+                    commentProfileImage = null,
+                    commentWriterName = "농부네 넷째",
+                    commentContent = "글이 너무 도움돼요!",
+                    commentDateTime = "10-11  13:23"
+                )
+            )
+        )
     }
 
 }
