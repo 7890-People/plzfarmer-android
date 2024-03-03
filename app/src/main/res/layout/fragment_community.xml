@@ -110,7 +110,7 @@
 
         <View
             android:layout_width="15dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:background="@color/background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
