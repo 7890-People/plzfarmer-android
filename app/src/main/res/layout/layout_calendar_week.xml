@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="32dp"
+    android:layout_marginHorizontal="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="SUN" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="MON" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="TUE" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="WED" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="THU" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="FRI" />
+
+    <TextView
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="SAT" />
+
+
+</LinearLayout>
