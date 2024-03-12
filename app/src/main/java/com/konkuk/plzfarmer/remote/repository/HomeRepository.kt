@@ -41,24 +41,6 @@ class HomeRepository: BaseRepository() {
                     imgUrl = "http://www.newsam.co.kr/data/photos/20180729/art_15318011131465_9b3bf5.jpg",
                     date = "2024-03-05",
                     diseaseName = "탄저병"
-                ),
-                RecentHistoryItemVO(
-                    plantType = "포도",
-                    imgUrl = "https://www.dongbangagro.co.kr/static/base/images/crop2_06_01.png",
-                    date = "2024-03-06",
-                    diseaseName = "탄저병"
-                ),
-                RecentHistoryItemVO(
-                    plantType = "포도",
-                    imgUrl = "http://www.newsam.co.kr/data/photos/20180729/art_15318011131465_9b3bf5.jpg",
-                    date = "2024-03-07",
-                    diseaseName = "탄저병"
-                ),
-                RecentHistoryItemVO(
-                    plantType = "포도",
-                    imgUrl = "http://www.newsam.co.kr/data/photos/20180729/art_15318011131465_9b3bf5.jpg",
-                    date = "2024-03-08",
-                    diseaseName = "탄저병"
                 )
             )
         )

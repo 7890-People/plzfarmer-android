@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
@@ -42,7 +43,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val CODE_GPS: Int = 300
 
     lateinit var myPlantRVAdapter: MyPlantRVAdapter
-    lateinit var recentHistoryRVAdapter: RecentHistoryRVAdapter
 
     override fun afterViewCreated() {
         Log.d(TAG, "afterViewCreated" )
@@ -90,8 +90,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         homeViewModel.recentHistoryList.observe(this) {
             it.byState(
                 onSuccess = { response ->
-                    recentHistoryRVAdapter.recentHistoryList = response
-                    recentHistoryRVAdapter.notifyDataSetChanged()
+                    if (response.size>=1){
+                        binding.homeRecentHistoryItem1.visibility = View.VISIBLE
+                        binding.recentHistoryItem1 = response[0]
+                        response[0].imgUrl.let {
+                            Glide.with(binding.root.context).load(it).into(binding.item1PlantImageIv)
+                        }
+                    }
+                    if (response.size>=2){
+                        binding.homeRecentHistoryItem2.visibility = View.VISIBLE
+                        binding.recentHistoryItem2 = response[1]
+                        response[1].imgUrl.let {
+                            Glide.with(binding.root.context).load(it).into(binding.item2PlantImageIv)
+                        }
+                    }
+                    if (response.size>=3){
+                        binding.homeRecentHistoryItem3.visibility = View.VISIBLE
+                        binding.recentHistoryItem3 = response[2]
+                        response[2].imgUrl.let {
+                            Glide.with(binding.root.context).load(it).into(binding.item3PlantImageIv)
+                        }
+                    }
                 },
                 onError = {
 
@@ -104,18 +123,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initRecyclerViews() {
         // 나의 식물 리사이클러뷰
-        binding.homeRecentHistoryRv.addItemDecoration(RecyclerViewDecoration(10)) // 수평 간격 설정
+        binding.homeMyPlantRv.addItemDecoration(RecyclerViewDecoration(10)) // 수평 간격 설정
         myPlantRVAdapter = MyPlantRVAdapter(onMyPlantItemClicked)
         binding.homeMyPlantRv.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.homeMyPlantRv.adapter = myPlantRVAdapter
 
-        // 최근 진단 기록 리사이클러뷰
-        binding.homeRecentHistoryRv.addItemDecoration(RecyclerViewDecoration(10)) // 수평 간격 설정
-        recentHistoryRVAdapter = RecentHistoryRVAdapter(onRecentHistoryItemClicked)
-        binding.homeRecentHistoryRv.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.homeRecentHistoryRv.adapter = recentHistoryRVAdapter
+
     }
 
     private val onMyPlantItemClicked: (myPlant: MyPlantVO) -> Unit = {
