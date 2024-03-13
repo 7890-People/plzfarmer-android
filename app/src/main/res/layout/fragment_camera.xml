@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="촬영하기"
             android:textSize="18sp"
-            android:fontFamily="@font/gangwong_edu_all_bold"
+            android:fontFamily="@font/gangwon_edu_all_bold"
             app:layout_constraintTop_toTopOf="@id/btn_back"
             app:layout_constraintBottom_toBottomOf="@id/btn_back"
             app:layout_constraintStart_toStartOf="parent"
