@@ -17,12 +17,17 @@ import com.konkuk.plzfarmer.presentation.main.community.CommunityViewModel
 import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
 import com.konkuk.plzfarmer.remote.repository.CommunityRepository
 import com.konkuk.plzfarmer.utils.ViewModelFactory
+import com.konkuk.plzfarmer.presentation.main.home.HomeViewModel
+import com.konkuk.plzfarmer.remote.repository.HomeRepository
+import com.konkuk.plzfarmer.remote.repository.WeatherRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val TAG: String = "MainActivity"
     override val layoutRes: Int = R.layout.activity_main
+    lateinit var weatherViewModel: WeatherViewModel
+    lateinit var homeViewModel: HomeViewModel
     lateinit var communityViewModel: CommunityViewModel
 
     private val mainViewModel: MainViewModel by lazy{
@@ -48,6 +53,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun initViewModel() {
+        weatherViewModel = ViewModelProvider(this, ViewModelFactory(WeatherRepository()))[WeatherViewModel::class.java]
+        homeViewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository()))[HomeViewModel::class.java]
         communityViewModel = ViewModelProvider(this, ViewModelFactory(CommunityRepository()))[CommunityViewModel::class.java]
     }
 
