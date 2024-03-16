@@ -12,11 +12,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityMainBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
+import com.konkuk.plzfarmer.presentation.main.community.CommunityFragment
+import com.konkuk.plzfarmer.presentation.main.community.CommunityViewModel
 import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
+import com.konkuk.plzfarmer.remote.repository.CommunityRepository
+import com.konkuk.plzfarmer.utils.ViewModelFactory
 import com.konkuk.plzfarmer.presentation.main.home.HomeViewModel
 import com.konkuk.plzfarmer.remote.repository.HomeRepository
 import com.konkuk.plzfarmer.remote.repository.WeatherRepository
-import com.konkuk.plzfarmer.utils.ViewModelFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,6 +28,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val layoutRes: Int = R.layout.activity_main
     lateinit var weatherViewModel: WeatherViewModel
     lateinit var homeViewModel: HomeViewModel
+    lateinit var communityViewModel: CommunityViewModel
 
     private val mainViewModel: MainViewModel by lazy{
         ViewModelProvider(this)[MainViewModel::class.java]
@@ -33,6 +37,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val homeFragment by lazy {
         supportFragmentManager.findFragmentByTag(HomeFragment::class.java.name)
             ?: HomeFragment()
+    }
+
+    private val communityFragment by lazy {
+        supportFragmentManager.findFragmentByTag(CommunityFragment::class.java.name)
+            ?: CommunityFragment()
     }
 
     override fun afterViewCreated() {
@@ -46,13 +55,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun initViewModel() {
         weatherViewModel = ViewModelProvider(this, ViewModelFactory(WeatherRepository()))[WeatherViewModel::class.java]
         homeViewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository()))[HomeViewModel::class.java]
+        communityViewModel = ViewModelProvider(this, ViewModelFactory(CommunityRepository()))[CommunityViewModel::class.java]
     }
 
     private fun getFragment(page: MainPage): Fragment {
         return when (page) {
             MainPage.HOME -> homeFragment
             MainPage.SEARCH -> homeFragment
-            MainPage.COMMUNITY -> homeFragment
+            MainPage.COMMUNITY -> communityFragment
             MainPage.NOTICE -> homeFragment
         }
     }
