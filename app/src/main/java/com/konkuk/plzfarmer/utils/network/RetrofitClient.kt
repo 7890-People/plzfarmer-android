@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private const val BASE_URL = "http://112.152.7.20:26900"
+    private const val WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
     private val httpLoggingInterceptor =
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
@@ -40,11 +41,29 @@ object RetrofitClient {
         )
         .build()
 
+    // Retrofit 객체 생성
+    val weatherRetrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(WEATHER_BASE_URL)
+        .client(interceptorClient)
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                    .setLenient()
+                    .create()
+            )
+        )
+        .build()
 
     // API 인터페이스 반환
     fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
     }
+
+    // API 인터페이스 반환
+    fun <T> createWeather(service: Class<T>): T {
+        return weatherRetrofit.create(service)
+    }
+
 }
 
 class ResponseInterceptor : Interceptor {
