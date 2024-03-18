@@ -18,7 +18,10 @@ import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
 import com.konkuk.plzfarmer.remote.repository.CommunityRepository
 import com.konkuk.plzfarmer.utils.ViewModelFactory
 import com.konkuk.plzfarmer.presentation.main.home.HomeViewModel
+import com.konkuk.plzfarmer.presentation.main.notice.NoticeFragment
+import com.konkuk.plzfarmer.presentation.main.notice.NoticeViewModel
 import com.konkuk.plzfarmer.remote.repository.HomeRepository
+import com.konkuk.plzfarmer.remote.repository.NoticeRepository
 import com.konkuk.plzfarmer.remote.repository.WeatherRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -29,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     lateinit var weatherViewModel: WeatherViewModel
     lateinit var homeViewModel: HomeViewModel
     lateinit var communityViewModel: CommunityViewModel
+    lateinit var noticeViewModel: NoticeViewModel
 
     private val mainViewModel: MainViewModel by lazy{
         ViewModelProvider(this)[MainViewModel::class.java]
@@ -44,6 +48,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             ?: CommunityFragment()
     }
 
+    private val noticeFragment by lazy {
+        supportFragmentManager.findFragmentByTag(NoticeFragment::class.java.name)
+            ?: NoticeFragment()
+    }
+
     override fun afterViewCreated() {
         collectPage()
         collectBtnvFlow()
@@ -56,6 +65,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         weatherViewModel = ViewModelProvider(this, ViewModelFactory(WeatherRepository()))[WeatherViewModel::class.java]
         homeViewModel = ViewModelProvider(this, ViewModelFactory(HomeRepository()))[HomeViewModel::class.java]
         communityViewModel = ViewModelProvider(this, ViewModelFactory(CommunityRepository()))[CommunityViewModel::class.java]
+        noticeViewModel = ViewModelProvider(this, ViewModelFactory(NoticeRepository()))[NoticeViewModel::class.java]
     }
 
     private fun getFragment(page: MainPage): Fragment {
@@ -63,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             MainPage.HOME -> homeFragment
             MainPage.SEARCH -> homeFragment
             MainPage.COMMUNITY -> communityFragment
-            MainPage.NOTICE -> homeFragment
+            MainPage.NOTICE -> noticeFragment
         }
     }
 
