@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="36dp"
         android:layout_height="20dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:layout_margin="8dp"
         android:text="일" />
@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="36dp"
         android:layout_height="20dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:layout_margin="8dp"
         android:text="월" />
@@ -24,14 +24,14 @@
         android:layout_width="36dp"
         android:layout_height="20dp"
         android:layout_margin="8dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:text="화" />
 
     <TextView
         android:layout_width="36dp"
         android:layout_height="20dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:layout_margin="8dp"
         android:text="수" />
@@ -40,14 +40,14 @@
         android:layout_width="36dp"
         android:layout_height="20dp"
         android:layout_margin="8dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:text="목" />
 
     <TextView
         android:layout_width="36dp"
         android:layout_height="20dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:layout_margin="8dp"
         android:text="금" />
@@ -55,7 +55,7 @@
     <TextView
         android:layout_width="36dp"
         android:layout_height="20dp"
-        android:fontFamily="@font/gangwong_edu_all_bold"
+        android:fontFamily="@font/gangwon_edu_all_bold"
         android:gravity="center"
         android:layout_margin="8dp"
         android:text="토" />

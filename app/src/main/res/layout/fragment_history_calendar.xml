@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:fontFamily="@font/gangwon_edu_all_bold"
                 android:text="2024년 3월"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/yearMonthTextView" />
 
-            <com.konkuk.plzfarmer.presentation.home.history.CalendarLayout
+            <com.konkuk.plzfarmer.presentation.main.home.history.calendar.CalendarLayout
                 android:id="@+id/calendarView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:id="@+id/recyclerDateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:fontFamily="@font/gangwon_edu_all_light"
                 android:gravity="center"
                 android:paddingTop="16dp"
                 android:paddingBottom="8dp"
@@ -114,7 +114,7 @@
                     android:id="@+id/emptyDateText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/gangwong_edu_all_bold"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
                     android:gravity="center"
                     android:text="2024-03-02" />
 

@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="커뮤니티"
                 android:textSize="16sp"
-                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:fontFamily="@font/gangwon_edu_all_bold"
                 android:textColor="@color/gray1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
                         android:paddingHorizontal="11dp"
                         android:paddingVertical="3.5dp"
                         android:textColor="@color/brown"
-                        android:fontFamily="@font/gangwong_edu_all_bold"/>
+                        android:fontFamily="@font/gangwon_edu_all_bold"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -99,7 +99,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/gray1"
                     android:maxLines="1"
-                    android:fontFamily="@font/gangwong_edu_all_bold"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
                     app:layout_constraintTop_toBottomOf="@id/community_detail_post_tag_cv"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
                         android:text="토마토에 이상한 증상이 생겼어요! 식물을 보니 잎들이 어딘가 이상하게 변색되어 있어요. 이런 상태를 처음 봐서 어떻게 대처해야 할지 감이 잘 안와요. 이런 증상이 왜 생기는 걸까요? 뭔가 식물에 문제가 있는 걸까요? 어떻게 해결해야 할지 조언을 주세요 ㅜㅜ."
                         android:textSize="12sp"
                         android:textColor="@color/gray1"
-                        android:fontFamily="@font/gangwong_edu_all_bold"
+                        android:fontFamily="@font/gangwon_edu_all_bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -167,7 +167,7 @@
                         android:paddingHorizontal="18dp"
                         android:textSize="13sp"
                         android:textColor="@color/white"
-                        android:fontFamily="@font/gangwong_edu_all_bold"
+                        android:fontFamily="@font/gangwon_edu_all_bold"
                         app:layout_constraintTop_toBottomOf="@id/community_detail_post_content_tv"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -195,7 +195,7 @@
                     app:layout_constraintStart_toEndOf="@id/community_detail_comment_icon_iv"
                     app:layout_constraintTop_toTopOf="@id/community_detail_comment_icon_iv"
                     app:layout_constraintBottom_toBottomOf="@id/community_detail_comment_icon_iv"
-                    android:fontFamily="@font/gangwong_edu_all_bold"
+                    android:fontFamily="@font/gangwon_edu_all_bold"
                     android:layout_marginStart="7dp"
                     android:layout_marginBottom="2dp"/>
 
@@ -253,7 +253,7 @@
                 app:layout_constraintEnd_toStartOf="@id/my_comment_post_tv"
                 android:layout_marginHorizontal="20dp"
                 android:hint="토마토마투님의 댓글 작성하기"
-                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:fontFamily="@font/gangwon_edu_all_bold"
                 android:textSize="13sp"
                 android:backgroundTint="@color/transparent"
                 android:textColorHighlight="@color/gray2"/>
@@ -264,7 +264,7 @@
                 android:layout_height="wrap_content"
                 android:text="등록"
                 android:textSize="14sp"
-                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:fontFamily="@font/gangwon_edu_all_bold"
                 android:textColor="@color/green11"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

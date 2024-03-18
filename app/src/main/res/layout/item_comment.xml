@@ -65,7 +65,7 @@
             android:id="@+id/comment_content_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gangwong_edu_all_bold"
+            android:fontFamily="@font/gangwon_edu_all_bold"
             android:textSize="12sp"
             android:textColor="@color/gray1"
             android:text="@{comment.commentContent}"
