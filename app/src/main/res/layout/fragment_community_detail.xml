@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <!--최상단 뷰-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/community_detail_top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/community_detail_back_iv"
+                android:layout_width="20dp"
+                android:layout_height="26dp"
+                android:src="@drawable/common_icon_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/community_detail_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="커뮤니티"
+                android:textSize="16sp"
+                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:textColor="@color/gray1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <ImageView
+                android:id="@+id/community_detail_menu_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/common_icon_menu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--중간 뷰-->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/community_detail_top_layout"
+            app:layout_constraintBottom_toTopOf="@id/my_comment_layout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/community_detail_post_tag_cv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:strokeColor="@color/brown"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="18dp">
+
+                    <TextView
+                        android:id="@+id/community_detail_post_tag_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:paddingHorizontal="11dp"
+                        android:paddingVertical="3.5dp"
+                        android:textColor="@color/brown"
+                        android:fontFamily="@font/gangwong_edu_all_bold"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/community_detail_post_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="우리집 토마토에 이상한  증상이 생겼어요"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray1"
+                    android:maxLines="1"
+                    android:fontFamily="@font/gangwong_edu_all_bold"
+                    app:layout_constraintTop_toBottomOf="@id/community_detail_post_tag_cv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:id="@+id/community_detail_post_info_linear_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/community_detail_post_title_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/community_detail_post_date_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10dp"/>
+                    <TextView
+                        android:id="@+id/community_detail_post_member_name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10dp"
+                        android:layout_marginStart="20dp"/>
+                </LinearLayout>
+
+                <!---->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/community_detail_post_content_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_shape_rect_r20_filled"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/community_detail_post_info_linear_layout"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="20dp">
+
+                    <TextView
+                        android:id="@+id/community_detail_post_content_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="5dp"
+                        android:text="토마토에 이상한 증상이 생겼어요! 식물을 보니 잎들이 어딘가 이상하게 변색되어 있어요. 이런 상태를 처음 봐서 어떻게 대처해야 할지 감이 잘 안와요. 이런 증상이 왜 생기는 걸까요? 뭔가 식물에 문제가 있는 걸까요? 어떻게 해결해야 할지 조언을 주세요 ㅜㅜ."
+                        android:textSize="12sp"
+                        android:textColor="@color/gray1"
+                        android:fontFamily="@font/gangwong_edu_all_bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginHorizontal="22dp"/>
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/community_post_btn"
+                        android:layout_width="77dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/common_selector_btn_by_checked"
+                        android:drawableStart="@drawable/community_icon_like_filled"
+                        android:button="@null"
+                        android:text="  31"
+                        android:paddingHorizontal="18dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/gangwong_edu_all_bold"
+                        app:layout_constraintTop_toBottomOf="@id/community_detail_post_content_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="30dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--댓글-->
+                <ImageView
+                    android:id="@+id/community_detail_comment_icon_iv"
+                    android:layout_width="9.5dp"
+                    android:layout_height="9.5dp"
+                    android:src="@drawable/community_icon_comment"
+                    android:backgroundTint="@color/gray1"
+                    app:layout_constraintTop_toBottomOf="@id/community_detail_post_content_layout"
+                    app:layout_constraintStart_toStartOf="@id/community_detail_post_content_layout"
+                    android:layout_marginTop="15dp"/>
+
+                <TextView
+                    android:id="@+id/community_detail_comment_num_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="댓글 개"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@id/community_detail_comment_icon_iv"
+                    app:layout_constraintTop_toTopOf="@id/community_detail_comment_icon_iv"
+                    app:layout_constraintBottom_toBottomOf="@id/community_detail_comment_icon_iv"
+                    android:fontFamily="@font/gangwong_edu_all_bold"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginBottom="2dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/community_detail_comment_rv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/community_detail_comment_icon_iv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/item_comment"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!--댓글 입력창-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/my_comment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/white">
+            
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/my_comment_profile_img_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="13dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+                
+                <ImageView
+                    android:id="@+id/my_comment_profile_img_iv"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"/>
+                
+            </com.google.android.material.card.MaterialCardView>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/my_comment_profile_img_cv"
+                app:layout_constraintEnd_toStartOf="@id/my_comment_post_tv"
+                android:layout_marginHorizontal="20dp"
+                android:hint="토마토마투님의 댓글 작성하기"
+                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:textSize="13sp"
+                android:backgroundTint="@color/transparent"
+                android:textColorHighlight="@color/gray2"/>
+
+            <TextView
+                android:id="@+id/my_comment_post_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="등록"
+                android:textSize="14sp"
+                android:fontFamily="@font/gangwong_edu_all_bold"
+                android:textColor="@color/green11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="20dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

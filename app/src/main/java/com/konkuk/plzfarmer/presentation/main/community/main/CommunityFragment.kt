@@ -1,12 +1,17 @@
-package com.konkuk.plzfarmer.presentation.main.community
+package com.konkuk.plzfarmer.presentation.main.community.main
 
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentCommunityBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.presentation.common.RecyclerViewItemDecorationVertical
+import com.konkuk.plzfarmer.presentation.main.MainActivity
+import com.konkuk.plzfarmer.presentation.main.community.CommunityViewModel
+import com.konkuk.plzfarmer.presentation.main.community.detail.CommunityDetailFragment
 
 class CommunityFragment : BaseFragment<FragmentCommunityBinding>() {
     override val TAG: String = "CommunityFragment"
@@ -64,5 +69,16 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>() {
 
     private val onPostItemClicked: (post: PostVO) -> Unit = {
         Log.d(TAG, "onPostItemClicked")
+        // 커뮤니티 상세로 이동
+        val act = requireActivity() as MainActivity
+        val communityDetailFragment = CommunityDetailFragment()
+        startFragment(communityDetailFragment, "communityDetailFragment")
+        act.setBtnvVisibility(false)
+    }
+
+    private fun startFragment(fragment: Fragment, name: String){
+        val transaction: FragmentTransaction = (context as MainActivity).supportFragmentManager.beginTransaction()
+        transaction.addToBackStack(name).replace(R.id.mainFragmentContainer, fragment)
+        transaction.commit()
     }
 }
