@@ -46,9 +46,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.gms:play-services-basement:18.3.0")
-    implementation("com.google.android.gms:play-services-location:21.1.0")
-    implementation("androidx.datastore:datastore-core:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -83,5 +80,8 @@ dependencies {
 
     //preference datastore
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
+    // 위도, 경도
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 
 }
