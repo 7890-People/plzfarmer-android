@@ -1,6 +1,5 @@
-package com.konkuk.plzfarmer.presentation.home.history
+package com.konkuk.plzfarmer.presentation.main.home.history.calendar
 
-import CalendarDateView
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.FragmentHistoryCalendarBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
+import com.konkuk.plzfarmer.presentation.main.home.history.CalendarActivity
 import com.konkuk.plzfarmer.remote.response.DateHistory
 import com.konkuk.plzfarmer.remote.response.DiseaseHistory
 import com.konkuk.plzfarmer.utils.customGetSerializable

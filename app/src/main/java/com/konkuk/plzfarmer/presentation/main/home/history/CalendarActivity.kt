@@ -1,9 +1,10 @@
-package com.konkuk.plzfarmer.presentation.home.history
+package com.konkuk.plzfarmer.presentation.main.home.history
 
 import androidx.lifecycle.lifecycleScope
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityCalendarBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
+import com.konkuk.plzfarmer.presentation.main.home.history.calendar.CalendarFragmentStateAdapter
 import com.konkuk.plzfarmer.remote.repository.PreferenceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,9 +33,13 @@ class CalendarActivity : BaseActivity<ActivityCalendarBinding>() {
             binding.viewPager.setCurrentItem(monthsDiff, false)
         }
 
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private suspend fun tmpFirstInit() {
+        //loginActivity에서 할 작업 임시로 init
         val prefRepository = PreferenceRepository(this@CalendarActivity)
         prefRepository.saveIsFirstInstall()
         prefRepository.saveFirstDate("2023-11-01")

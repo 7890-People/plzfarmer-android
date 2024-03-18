@@ -1,13 +1,10 @@
-package com.konkuk.plzfarmer.presentation.home.history
+package com.konkuk.plzfarmer.presentation.main.home.history.calendar
 
-import CalendarDateView
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.widget.GridLayout
-import android.widget.TextView
 import androidx.core.view.children
 import com.konkuk.plzfarmer.remote.response.DateHistory
 import java.time.LocalDateTime
