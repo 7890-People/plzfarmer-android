@@ -12,16 +12,20 @@ import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.LayoutCustomSelectButtonBinding
 
 
-class CustomSelectButton @JvmOverloads constructor(
+class CustomSelectButton(
     context: Context, attrs: AttributeSet
 ) : ConstraintLayout(context, attrs) {
     private var drawableId: Int? = null
     private lateinit var labelString: String
 
-    val binding by lazy {
-        LayoutCustomSelectButtonBinding.bind(
-            LayoutInflater.from(context).inflate(R.layout.layout_custom_select_button, this, false)
-        )
+    private var _binding: LayoutCustomSelectButtonBinding? = LayoutCustomSelectButtonBinding.bind(
+        LayoutInflater.from(context).inflate(R.layout.layout_custom_select_button, this, false)
+    )
+    val binding = _binding!!
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        _binding = null
     }
 
     init {

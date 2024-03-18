@@ -12,7 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityMainBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
-import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
+//import com.konkuk.plzfarmer.presentation.main.home.HomeFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -22,11 +22,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val mainViewModel: MainViewModel by lazy{
         ViewModelProvider(this)[MainViewModel::class.java]
     }
-
-    private val homeFragment by lazy {
-        supportFragmentManager.findFragmentByTag(HomeFragment::class.java.name)
-            ?: HomeFragment()
-    }
+//
+//    private val homeFragment by lazy {
+//        supportFragmentManager.findFragmentByTag(HomeFragment::class.java.name)
+//            ?: HomeFragment()
+//    }
 
     override fun afterViewCreated() {
         collectPage()
@@ -35,14 +35,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setBackBtn()
     }
 
-    private fun getFragment(page: MainPage): Fragment {
-        return when (page) {
-            MainPage.HOME -> homeFragment
-            MainPage.SEARCH -> homeFragment
-            MainPage.COMMUNITY -> homeFragment
-            MainPage.NOTICE -> homeFragment
-        }
-    }
+//    private fun getFragment(page: MainPage): Fragment {
+//        return when (page) {
+//            MainPage.HOME -> homeFragment
+//            MainPage.SEARCH -> homeFragment
+//            MainPage.COMMUNITY -> homeFragment
+//            MainPage.NOTICE -> homeFragment
+//        }
+//    }
 
     private fun collectBtnvFlow() {
         lifecycleScope.launch {
@@ -62,15 +62,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 var prevPage = mainViewModel.pageFlow.value
                 mainViewModel.pageFlow.collect { page ->
                     Log.d(TAG, " $page collect됨")
-                    val preFragment = getFragment(prevPage)
-                    val fragment = getFragment(page)
-                    supportFragmentManager.commit {
-                        if (preFragment != fragment) hide(preFragment)
-                        if (fragment.isAdded) {
-                            show(fragment)
-                        } else add(R.id.mainFragmentContainer, fragment, fragment.javaClass.name)
-                    }
-                    prevPage = page
+//                    val preFragment = getFragment(prevPage)
+//                    val fragment = getFragment(page)
+//                    supportFragmentManager.commit {
+//                        if (preFragment != fragment) hide(preFragment)
+//                        if (fragment.isAdded) {
+//                            show(fragment)
+//                        } else add(R.id.mainFragmentContainer, fragment, fragment.javaClass.name)
+//                    }
+//                    prevPage = page
                 }
             }
         }

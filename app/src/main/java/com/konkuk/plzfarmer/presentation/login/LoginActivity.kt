@@ -3,7 +3,11 @@ package com.konkuk.plzfarmer.presentation.login
 import SignUpFarmInfoFragment
 import SignUpHasFarmFragment
 import SignUpNicknameFragment
+import android.content.Context
 import androidx.activity.OnBackPressedCallback
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
@@ -14,9 +18,14 @@ import com.konkuk.plzfarmer.R
 import com.konkuk.plzfarmer.databinding.ActivityLoginBinding
 import com.konkuk.plzfarmer.presentation.base.BaseActivity
 import com.konkuk.plzfarmer.remote.repository.AuthRepository
+import com.konkuk.plzfarmer.remote.repository.PreferenceRepository
 import com.konkuk.plzfarmer.utils.ViewModelFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "plzFarmer")
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override val layoutRes: Int
@@ -29,8 +38,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     }
 
     override fun afterViewCreated() {
+        setFirstInstall()
         collectPage()
         setBackBtn()
+    }
+
+    private fun setFirstInstall() {
+        val prefRepository = PreferenceRepository(this)
+        lifecycleScope.launch(Dispatchers.IO) {
+//            if (prefRepository.getIsFirstInstall() == false) return@launch
+            prefRepository.saveIsFirstInstall()
+            prefRepository.saveFirstDate(LocalDate.now().toString())
+        }
     }
 
     private val loginFragment by lazy {
