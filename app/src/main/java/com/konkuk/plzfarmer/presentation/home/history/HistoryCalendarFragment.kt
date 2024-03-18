@@ -38,6 +38,17 @@ class HistoryCalendarFragment : BaseFragment<FragmentHistoryCalendarBinding>() {
         Log.d(TAG, "position: $position")
         initCalendar()
         initRecycler()
+        initMonthBtn()
+    }
+
+    private fun initMonthBtn() {
+        val activity = requireActivity() as CalendarActivity
+        binding.calendarNextBtn.setOnClickListener {
+            activity.plusMonth(1)
+        }
+        binding.calendarPrevBtn.setOnClickListener {
+            activity.plusMonth(-1)
+        }
     }
 
     private fun initRecycler() {
@@ -54,13 +65,16 @@ class HistoryCalendarFragment : BaseFragment<FragmentHistoryCalendarBinding>() {
         val onDateClickListener = object : CalendarDateView.OnDateClickListener {
             override fun onClick(history: DateHistory?, date: LocalDate) {
                 binding.emptyDateText.text = date.toString()
+                binding.recyclerDateText.text = date.toString()
 
                 if (history == null) {
                     adapter.historyList = emptyList()
                     binding.emptyIndicatorLayout.visibility = View.VISIBLE
+                    binding.recyclerDateText.visibility = View.GONE
                 } else {
                     adapter.historyList = history.historyList
                     binding.emptyIndicatorLayout.visibility = View.GONE
+                    binding.recyclerDateText.visibility = View.VISIBLE
                 }
                 adapter.notifyDataSetChanged()
             }

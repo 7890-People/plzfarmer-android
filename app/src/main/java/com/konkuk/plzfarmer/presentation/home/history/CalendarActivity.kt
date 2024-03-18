@@ -15,6 +15,7 @@ class CalendarActivity : BaseActivity<ActivityCalendarBinding>() {
     override val layoutRes: Int
         get() = R.layout.activity_calendar
 
+
     override fun afterViewCreated() {
         lifecycleScope.launch {
             tmpFirstInit()
@@ -34,9 +35,14 @@ class CalendarActivity : BaseActivity<ActivityCalendarBinding>() {
     }
 
     private suspend fun tmpFirstInit() {
-            val prefRepository = PreferenceRepository(this@CalendarActivity)
-            prefRepository.saveIsFirstInstall()
-            prefRepository.saveFirstDate("2023-11-01")
+        val prefRepository = PreferenceRepository(this@CalendarActivity)
+        prefRepository.saveIsFirstInstall()
+        prefRepository.saveFirstDate("2023-11-01")
+    }
+
+    fun plusMonth(months: Int) {
+        val current = binding.viewPager.currentItem
+        binding.viewPager.setCurrentItem(current + months, true)
     }
 
 
