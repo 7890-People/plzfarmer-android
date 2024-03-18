@@ -46,6 +46,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -76,6 +77,9 @@ dependencies {
 
     //lottie animation
     implementation ("com.airbnb.android:lottie:5.0.2")
+
+    //preference datastore
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
 
     // 위도, 경도
     implementation("com.google.android.gms:play-services-location:21.0.1")

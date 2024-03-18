@@ -11,6 +11,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.util.Log
 import android.view.View
+import android.view.View.OnClickListener
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -32,6 +33,7 @@ import com.konkuk.plzfarmer.databinding.FragmentHomeBinding
 import com.konkuk.plzfarmer.presentation.base.BaseFragment
 import com.konkuk.plzfarmer.presentation.common.RecyclerViewDecoration
 import com.konkuk.plzfarmer.presentation.main.WeatherViewModel
+import com.konkuk.plzfarmer.presentation.main.home.history.CalendarActivity
 import java.io.IOException
 import java.util.Locale
 
@@ -141,9 +143,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initClickListener() {
-        binding.homeRecentHistoryMoreIv.setOnClickListener {
-            Log.d(TAG, "homeRecentHistoryMoreIv Clicked")
+        val historyClickedListener = object : OnClickListener{
+            override fun onClick(v: View?) {
+                val intent = Intent(requireContext(), CalendarActivity::class.java)
+                startActivity(intent)
+            }
         }
+        binding.homeRecentHistoryMoreIv.setOnClickListener(historyClickedListener)
+        binding.homeRecentHistoryCv.setOnClickListener(historyClickedListener)
     }
 
 
